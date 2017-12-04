@@ -2,8 +2,8 @@ module Main where
 
 import Lib
 import Data.List
-import Data.Map (Map)
-import qualified Data.Map as Map
+import Data.Map.Strict (Map)
+import qualified Data.Map.Strict as Map
 
 data Coord = Coord {
     x :: Int,
@@ -45,6 +45,7 @@ get_manhattan (Coord x y) =
 
 main :: IO ()
 main = do
-    let m = Map Coord Int
-    updateMap m 1
-    print $ (get_manhattan . xy . spiral) 265149
+    let m = (Map.empty)
+    let k = updateMap m 1
+    print $ map (xy . spiral) [1..200]
+    -- print k
